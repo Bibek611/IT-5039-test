@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Tax Calculator</h1>
+    <p>Please enter your annual income in the box below and click "Calculate" to see your estimated tax.</p>
+
+    <!-- Input for salary -->
+    <input type="text" id="salary" placeholder="Enter your salary">
+    <button onclick="calculateTax()">Calculate</button>
+
+    <!-- Display the tax result -->
+    <div class="result" id="tax-result"></div>
+
+    <script>
+        function calculateTax() {
+            const salary = parseFloat(document.getElementById('salary').value);
+            let tax = 0;
+
+            if (isNaN(salary) || salary < 0) {
+                document.getElementById('tax-result').innerText = "Please enter a valid positive salary.";
+                return;
+            }
+
+            // NZ Tax Brackets (example rates for 2024)
+            if (salary <= 14000) {
+                tax = salary * 0.105;
+            } else if (salary <= 48000) {
+                tax = (14000 * 0.105) + ((salary - 14000) * 0.175);
+            } else if (salary <= 70000) {
+                tax = (14000 * 0.105) + (34000 * 0.175) + ((salary - 48000) * 0.30);
+            } else if (salary <= 180000) {
+                tax = (14000 * 0.105) + (34000 * 0.175) + (22000 * 0.30) + ((salary - 70000) * 0.33);
+            } else {
+                tax = (14000 * 0.105) + (34000 * 0.175) + (22000 * 0.30) + (110000 * 0.33) + ((salary - 180000) * 0.39);
+            }
+
+            document.getElementById('tax-result').innerText = "Your estimated tax is: $" + tax.toFixed(2);
+        }
+    </script>
+    
+</body>
+</html>

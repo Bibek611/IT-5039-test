@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cart Quantity</h1>
+
+    <!-- Buttons to manage cart quantity -->
+    <button onclick="showQuantity()">Show Quantity</button>
+    <button onclick="addToCart()">Add to Cart</button>
+    <button onclick="addTwo()">+2</button>
+    <button onclick="addThree()">+3</button>
+    <button onclick="resetQuantity()">Reset</button>
+
+    <!-- Display the quantity -->
+    <h2 id="quantity-display">Quantity: 0</h2>
+
+    <script>
+        let quantity = 0;
+
+        // Show the current quantity in the cart
+        function showQuantity() {
+            document.getElementById("quantity-display").innerText = "Quantity: " + quantity;
+        }
+
+        // Add 1 to the cart
+        function addToCart() {
+            quantity += 1;
+            showQuantity();
+        }
+
+        // Add 2 to the cart
+        function addTwo() {
+            quantity += 2;
+            showQuantity();
+        }
+
+        // Add 3 to the cart
+        function addThree() {
+            quantity += 3;
+            showQuantity();
+        }
+
+        // Reset the cart quantity to 0
+        function resetQuantity() {
+            quantity = 0;
+            showQuantity();
+        }
+    </script>
+
+    
+</body>
+</html>
